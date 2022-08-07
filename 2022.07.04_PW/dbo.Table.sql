@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[StudentsGrades]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL IDENTITY PRIMARY KEY, 
     [FullName] NVARCHAR(100) NOT NULL CHECK(FullName != ''), 
     [GroupName] NVARCHAR(30) NOT NULL DEFAULT 'Приёмная группа', 
     [AverageGradesForYears] FLOAT NULL, 
