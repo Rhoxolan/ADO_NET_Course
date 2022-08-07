@@ -45,13 +45,107 @@ namespace MyProgram
 
                     cmd.CommandText = "SELECT * FROM StudentsGrades"; //Выбираем все значения
                     SqlDataReader sqlDataReader = cmd.ExecuteReader();
-                    Console.WriteLine($"{sqlDataReader.GetName(0)}\t{sqlDataReader.GetName(1)}\t{sqlDataReader.GetName(2)}\t{sqlDataReader.GetName(3)}\t{sqlDataReader.GetName(4)}");
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}\t{sqlDataReader.GetName(1),30}\t{sqlDataReader.GetName(2),30}\t{sqlDataReader.GetName(3),30}\t{sqlDataReader.GetName(4),30}\t{sqlDataReader.GetName(5),30}");
                     while (sqlDataReader.Read())
                     {
-                        Console.WriteLine($"{sqlDataReader.GetValue(0)}\t{sqlDataReader.GetValue(1)}\t{sqlDataReader.GetValue(2)}\t{sqlDataReader.GetValue(3)}\t{sqlDataReader.GetValue(4)}");
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}\t{sqlDataReader.GetValue(1),30}\t{sqlDataReader.GetValue(2),30}\t{sqlDataReader.GetValue(3),30}\t{sqlDataReader.GetValue(4),30}\t{sqlDataReader.GetValue(5),30}");
                     }
-                    //Ты тут. Разобраться с красивым выводом.
+                    Console.WriteLine("\n");
                     sqlDataReader.Close();
+
+
+                    cmd.CommandText = "SELECT FullName AS ФИО FROM StudentsGrades"; //Выбираем ФИО
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    cmd.CommandText = "SELECT AverageGradesForYears AS 'Средняя оценка' FROM StudentsGrades"; //Выбираем ФИО
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    cmd.CommandText = "SELECT AverageGradesForYears AS 'Средняя оценка', FullName AS ФИО FROM StudentsGrades " +
+                        "WHERE AverageGradesForYears > 9"; //Показать ФИО всех студентов с минимальной оценкой, больше, чем указанная;
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}{sqlDataReader.GetName(1), 30}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}{sqlDataReader.GetValue(1), 30}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Показать название всех предметов с минимальными средними оценками. Названия предметов должны быть уникальными.
+                    cmd.CommandText = "SELECT DISTINCT NameOfMinAVGGradesSubject FROM StudentsGrades";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    conn?.Close();
+                }
+            }
+            Console.WriteLine("\n\n\n");
+
+            //Задание 4.
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new();
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = "SELECT MIN(AverageGradesForYears) FROM StudentsGrades"; //Показать минимальную среднюю оценку;
+                    object minGrades = cmd.ExecuteScalar();
+                    Console.WriteLine($"Минимальная средняя оценка: {minGrades}");
+                    Console.WriteLine("\n");
+
+                    cmd.CommandText = "SELECT MAX(AverageGradesForYears) FROM StudentsGrades"; //Показать максимальную среднюю оценку;
+                    object maxGrades = cmd.ExecuteScalar();
+                    Console.WriteLine($"Максимальная средняя оценка: {maxGrades}");
+                    Console.WriteLine("\n");
+
+                    //Показать количество студентов, у которых минимальная средняя оценка по математике;
+                    cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.NameOfMinAVGGradesSubject = N'Математика'";
+                    object mathematicsLowStudents = cmd.ExecuteScalar();
+                    Console.WriteLine($"Количество студентов, у которых минимальная средняя оценка по математике: {mathematicsLowStudents}");
+                    Console.WriteLine("\n");
+
+                    //Показать количество студентов, у которых маскимальная средняя оценка по математике;
+                    cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.NameOfMaxAVGGradesSubject = N'Математика'";
+                    object mathematicsHightStudents = cmd.ExecuteScalar();
+                    Console.WriteLine($"Количество студентов, у которых маскимальная средняя оценка по математике: {mathematicsHightStudents}");
+                    Console.WriteLine("\n");
+
+                    //Показать количество студентов в каждой группе;
+                    cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 5'";
+                    object gr5studentsCount = cmd.ExecuteScalar();
+                    cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 7'";
+                    object gr7studentsCount = cmd.ExecuteScalar();
+                    cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 3'";
+                    object gr3studentsCount = cmd.ExecuteScalar();
+                    Console.WriteLine($"Группа 5 - {gr5studentsCount} чел., Группа 7 - {gr7studentsCount} чел., Группа 3 - {gr3studentsCount} чел.");
+
+                    //Показать среднюю оценку по группе.
+
                 }
                 catch (Exception ex)
                 {
