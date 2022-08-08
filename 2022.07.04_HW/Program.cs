@@ -61,6 +61,34 @@ namespace _2022._07._04_HW
                         Console.WriteLine($"{sqlDataReader[0], 15}\t{sqlDataReader[1], 15}\t{sqlDataReader[2], 15}\t{sqlDataReader[3], 15}\t{sqlDataReader[4], 15}");
                         line++;
                     }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Выбираем названия фруктов и овощей
+                    cmd.CommandText = "SELECT Name FROM FruitsAndVegetables";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Отображение всех цветов;
+                    cmd.CommandText = "SELECT Color FROM FruitsAndVegetables";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Выполнение нескольких запросов сразу через NextResult() - Добавить в примечание
+                    //Показать максимальную, минимальную и среднюю калорийность;
+                    cmd.CommandText = "";
                 }
                 catch (Exception ex)
                 {
