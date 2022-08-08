@@ -143,9 +143,16 @@ namespace MyProgram
                     cmd.CommandText = "SELECT COUNT(StudentsGrades.Id) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 3'";
                     object gr3studentsCount = cmd.ExecuteScalar();
                     Console.WriteLine($"Группа 5 - {gr5studentsCount} чел., Группа 7 - {gr7studentsCount} чел., Группа 3 - {gr3studentsCount} чел.");
+                    Console.WriteLine("\n");
 
                     //Показать среднюю оценку по группе.
-
+                    cmd.CommandText = "SELECT AVG(StudentsGrades.AverageGradesForYears) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 5'";
+                    object avgGroup5grade = cmd.ExecuteScalar();
+                    cmd.CommandText = "SELECT AVG(StudentsGrades.AverageGradesForYears) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 7'";
+                    object avgGroup7grade = cmd.ExecuteScalar();
+                    cmd.CommandText = "SELECT AVG(StudentsGrades.AverageGradesForYears) FROM StudentsGrades WHERE StudentsGrades.GroupName = N'Группа 3'";
+                    object avgGroup3grade = cmd.ExecuteScalar();
+                    Console.WriteLine($"Средняя оценка Гр.5 - {avgGroup5grade}, Средняя оценка Гр.7 - {avgGroup7grade}, Средняя оценка Гр.3 - {avgGroup3grade},");
                 }
                 catch (Exception ex)
                 {
