@@ -23,7 +23,6 @@ namespace _2022._07._04_HW
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    conn?.Close();
                 }
             }
             Console.WriteLine("\n\n\n");
@@ -86,7 +85,7 @@ namespace _2022._07._04_HW
                     Console.WriteLine("\n");
                     sqlDataReader.Close();
 
-                    //Выполнение нескольких запросов сразу через NextResult() - Добавить в примечание
+                    //Выполнение нескольких запросов сразу через NextResult()
                     //Показать максимальную, минимальную и среднюю калорийность;
                     cmd.CommandText = "SELECT DISTINCT Calories FROM FruitsAndVegetables WHERE Calories = (SELECT MAX(Calories) FROM FruitsAndVegetables); " +
                         "SELECT DISTINCT Calories FROM FruitsAndVegetables WHERE Calories = (SELECT MIN(Calories) FROM FruitsAndVegetables); " +
@@ -145,11 +144,64 @@ namespace _2022._07._04_HW
                     object countFruitNVegAtColor = cmd.ExecuteScalar();
                     Console.WriteLine($"Количество овощей и фруктов заданного цвета: {countFruitNVegAtColor}");
                     Console.WriteLine("\n");
+
+                    //Показать количество овощей фруктов каждого цвета;
+                    cmd.CommandText = "SELECT COUNT(Color) FROM FruitsAndVegetables";
+                    object countAllColors = cmd.ExecuteScalar();
+                    Console.WriteLine($"Количество овощей и фруктов каждого цвета: {countAllColors}");
+                    Console.WriteLine("\n");
+
+                    //Показать овощи и фрукты с калорийностью ниже указанной;
+                    cmd.CommandText = "SELECT Name, Calories FROM FruitsAndVegetables " +
+                        "WHERE Calories < 20";
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}{sqlDataReader.GetName(1),30}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}{sqlDataReader.GetValue(1),30}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Показать овощи и фрукты с калорийностью выше указанной;
+                    cmd.CommandText = "SELECT Name, Calories FROM FruitsAndVegetables " +
+                        "WHERE Calories > 20";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}{sqlDataReader.GetName(1),30}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}{sqlDataReader.GetValue(1),30}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Показать овощи и фрукты с калорийностью в указанном диапазоне;
+                    cmd.CommandText = "SELECT Name, Calories FROM FruitsAndVegetables " +
+                        "WHERE Calories BETWEEN 10 AND 20";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}{sqlDataReader.GetName(1),30}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}{sqlDataReader.GetValue(1),30}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
+
+                    //Показать все овощи и фрукты, у которых цвет желтый или красный.
+                    cmd.CommandText = "SELECT Name, Color FROM FruitsAndVegetables " +
+                        "WHERE Color = N'Зелёный' OR Color = N'Красный'";
+                    sqlDataReader = cmd.ExecuteReader();
+                    Console.WriteLine($"{sqlDataReader.GetName(0)}{sqlDataReader.GetName(1),30}");
+                    while (sqlDataReader.Read())
+                    {
+                        Console.WriteLine($"{sqlDataReader.GetValue(0)}{sqlDataReader.GetValue(1),30}");
+                    }
+                    Console.WriteLine("\n");
+                    sqlDataReader.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    conn?.Close();
                 }
             }
             Console.WriteLine("\n\n\n");
