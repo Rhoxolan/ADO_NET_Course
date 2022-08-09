@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		Примечание.txt = Примечание.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2022.07.04_HW", "2022.07.04_HW\2022.07.04_HW.csproj", "{D72B8626-C3D4-4E6F-953A-DAFE35416127}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2022.07.04_HW", "2022.07.04_HW\2022.07.04_HW.csproj", "{D72B8626-C3D4-4E6F-953A-DAFE35416127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2022.07.06_PW", "2022.07.06_PW\2022.07.06_PW.csproj", "{0E51D3E9-230A-4B27-8FB1-1F53AD567BEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{D72B8626-C3D4-4E6F-953A-DAFE35416127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D72B8626-C3D4-4E6F-953A-DAFE35416127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D72B8626-C3D4-4E6F-953A-DAFE35416127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E51D3E9-230A-4B27-8FB1-1F53AD567BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E51D3E9-230A-4B27-8FB1-1F53AD567BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E51D3E9-230A-4B27-8FB1-1F53AD567BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E51D3E9-230A-4B27-8FB1-1F53AD567BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
