@@ -56,5 +56,30 @@ namespace _2022._07._06_PW
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new(connString))
+            {
+                string queryStr = $"Insert into Products VALUES(" +
+                    $"{numericUpDown1.Value}, " +
+                    $"{numericUpDown2.Value}, " +
+                    $"N'{textBox1.Text}', " +
+                    $"{numericUpDown3.Value}, " +
+                    $"{numericUpDown4.Value}, " +
+                    $"'{dateTimePicker1.Value.ToString()}')";
+                SqlCommand command = new(queryStr, connection);
+                try
+                {
+                    connection.Open();
+                    int count = command.ExecuteNonQuery();
+                    MessageBox.Show($"{count} rows affected");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }
