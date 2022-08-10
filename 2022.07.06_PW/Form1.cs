@@ -67,7 +67,7 @@ namespace _2022._07._06_PW
                     $"N'{textBox1.Text}', " +
                     $"{numericUpDown3.Value}, " +
                     $"{numericUpDown4.Value}, " +
-                    $"'{dateTimePicker1.Value.ToString()}')";
+                    $"'{dateTimePicker1.Value.ToString("MM-dd-yyyy")}')";
                 SqlCommand command = new(queryStr, connection);
                 try
                 {
