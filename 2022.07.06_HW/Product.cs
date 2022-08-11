@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2022._07._06_HW
 {
+    //Класс не задействован
     public class Product
     {
         public int Id { get; set; }

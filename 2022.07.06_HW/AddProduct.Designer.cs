@@ -124,18 +124,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(138, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 15);
+            this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 17;
-            this.label2.Text = "ProviderId";
+            this.label2.Text = "Поставщик";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 15);
+            this.label1.Size = new System.Drawing.Size(27, 15);
             this.label1.TabIndex = 15;
-            this.label1.Text = "TypeId";
+            this.label1.Text = "Тип";
             // 
             // comboBox1
             // 
@@ -173,6 +173,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddProduct";
             this.Text = "AddProduct";
+            this.Load += new System.EventHandler(this.AddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);

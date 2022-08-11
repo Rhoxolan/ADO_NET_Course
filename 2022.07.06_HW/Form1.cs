@@ -70,5 +70,11 @@ namespace _2022._07._06_HW
             AddProductProvider app = new(connString);
             app.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddProduct ap = new(connString);
+            ap.ShowDialog();
+        }
     }
 }
