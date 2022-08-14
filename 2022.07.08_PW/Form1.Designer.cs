@@ -37,7 +37,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,8 +72,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(372, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Отобразить всю информацию о концтоварах";
+            this.button2.Text = "Отобразить всю информацию о канцтоварах";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -81,6 +85,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Отображение всех типов канцтоваров";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -91,6 +96,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Отображение всех менеджеров по продажам";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -101,6 +107,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Показать канцтовары с максимальным количеством единиц";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -109,8 +116,9 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(372, 23);
             this.button6.TabIndex = 6;
-            this.button6.Text = "Показать канцтовары с минимальным количеством единиц";
+            this.button6.Text = "Показать канцтовары с маскимальной себестоимостью единицы";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -121,6 +129,7 @@
             this.button7.TabIndex = 7;
             this.button7.Text = "Показать канцтовары с минимальным количеством единиц";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -131,24 +140,55 @@
             this.button8.TabIndex = 8;
             this.button8.Text = "Показать канцтовары с минимальной себестоимостью единицы";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 337);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(372, 23);
+            this.comboBox1.TabIndex = 9;
             // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button9.Location = new System.Drawing.Point(390, 284);
+            this.button9.Location = new System.Drawing.Point(390, 336);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(372, 23);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Показать канцтовары с максимальной себестоимостью единицы";
+            this.button9.TabIndex = 10;
+            this.button9.Text = "Показать канцтовары заданного типа";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 366);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(372, 23);
+            this.textBox1.TabIndex = 11;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button10.Location = new System.Drawing.Point(390, 366);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(372, 23);
+            this.button10.TabIndex = 12;
+            this.button10.Text = "Поиск по фирме";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(776, 450);
+            this.ClientSize = new System.Drawing.Size(776, 634);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button9);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -160,8 +200,10 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -176,6 +218,9 @@
         private Button button6;
         private Button button7;
         private Button button8;
+        private ComboBox comboBox1;
         private Button button9;
+        private TextBox textBox1;
+        private Button button10;
     }
 }
