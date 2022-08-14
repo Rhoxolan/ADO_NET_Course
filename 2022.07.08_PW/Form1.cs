@@ -172,7 +172,7 @@ namespace _2022._07._08_PW
             using (SqlConnection connection = new(connStr))
             {
                 string title = textBox1.Text;
-                string queryStr = $"SELECT Stationeries.Name, Sales.DateOfSale, FirmBuyers.Name AS Firm FROM Stationeries " +
+                string queryStr = $"SELECT Stationeries.Name, Sales.DateOfSale, FirmBuyers.Name AS Firm FROM Stationeries " + //Использование параметризованного запроса
                     $"JOIN Sales ON Sales.StationeryId = Stationeries.Id " +
                     $"JOIN FirmBuyers ON Sales.FirmBuyerId = FirmBuyers.Id " +
                     $"WHERE FirmBuyers.Name = @name";
@@ -212,6 +212,34 @@ namespace _2022._07._08_PW
                 finally
                 {
                     reader?.Close();
+                    connection?.Close();
+                }
+            }
+        }
+
+        //Пример использования хранимых процедур. Хранимая процедура возвращает среднеарифметическую цену продажи в конкретный год.
+        private void button11_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new(connStr))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("ShowAVGSellingsOnYear", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@year", SqlDbType.Int).Value = Convert.ToInt32(textBox2.Text);
+                    SqlParameter outputParam = new SqlParameter("@avgPrice", SqlDbType.Int);
+                    outputParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outputParam);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show(cmd.Parameters["@avgPrice"].Value.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
                     connection?.Close();
                 }
             }
