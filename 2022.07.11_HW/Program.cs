@@ -1,4 +1,4 @@
-namespace _2022._07._11_HW
+namespace _2022._07._08_PW
 {
     internal static class Program
     {
