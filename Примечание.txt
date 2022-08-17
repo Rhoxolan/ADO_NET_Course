@@ -13,4 +13,4 @@ PW (WinForms, MS SQL). Создана БД "StationeryManufacturing". Объяв
 HW (WinForms, PostgreSQL). Создан аналог БД "StationeryManufacturing" в PostgreSQL. Копия приложения с PW 08.07.2022, ориентированная на работу с PostgreSQL. Пример строки подключения для PostgreSQL. Пример привидения типов, создания хранимой процедуры и создания проверки CHECK в PostgreSQL.
 
 13.07.2022 Фабрика провайдерів. Огляд асинхронних режимів доступу. Ч. 2
-HW (WinForms, MS SQL, PostgreSQL). Создан аналог БД "FruitsAndVegetables" в PostgreSQL. Использование фабрики провайдеров для работы с разными СУБД с универсалными методами.
+HW (WinForms, MS SQL, PostgreSQL). Создан аналог БД "FruitsAndVegetables" в PostgreSQL. Использование фабрики провайдеров для работы с разными СУБД с универсалными методами. Пример удаления строки из БД по выбранному элементу в dataGridView.

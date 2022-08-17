@@ -108,5 +108,11 @@ namespace _2022._07._13_HW
                 ExecuteQuery($"INSERT INTO FruitsAndVegetables VALUES (N'{textBox1.Text}', {Convert.ToInt32(textBox2.Text)}, N'{textBox3.Text}', {Convert.ToInt32(textBox4.Text)})");
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
+            ExecuteQuery($"DELETE FROM FruitsAndVegetables WHERE Id = {id}");
+        }
     }
 }
