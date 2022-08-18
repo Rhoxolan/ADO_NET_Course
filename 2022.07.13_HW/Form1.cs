@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace _2022._07._13_HW
 {
@@ -25,6 +26,7 @@ namespace _2022._07._13_HW
             //Подгрузка двух вариантов подключений к базам данных
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
             DbProviderFactories.RegisterFactory("Npgsql", NpgsqlFactory.Instance);
+            DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
             dt = DbProviderFactories.GetFactoryClasses();
             comboBox1.DataSource = null;
             comboBox1.DataSource = dt;
