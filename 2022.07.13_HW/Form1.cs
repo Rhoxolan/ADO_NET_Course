@@ -93,6 +93,47 @@ namespace _2022._07._13_HW
             }
         }
 
+        //Универсальный метод для выполнения запросов, вариант с передачей объектов DbCommand и DbConnection для выполнения параметризованного запроса.
+        private void ExecuteQuery2(DbCommand command)
+        {
+            using (DbConnection connection = providerFactory.CreateConnection())
+            {
+                connection.ConnectionString = connStr;
+                command.Connection = connection;
+                DataTable dt2 = new();
+                DbDataReader reader = null;
+                try
+                {
+                    connection?.OpenAsync();
+                    reader = command.ExecuteReader();
+                    int line = 0;
+                    dt2.Columns.Clear();
+                    while (reader.Read())
+                    {
+                        if (line == 0)
+                            for (int i = 0; i < reader.FieldCount; i++)
+                                dt2.Columns.Add(reader.GetName(i));
+                        DataRow row = dt2.NewRow();
+                        for (int i = 0; i < reader.FieldCount; i++)
+                            row[i] = reader[i];
+                        dt2.Rows.Add(row);
+                        line++;
+                    }
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = dt2;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    reader?.Close();
+                    connection?.Close();
+                }
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             ExecuteQuery("SELECT * FROM FruitsAndVegetables");
@@ -103,11 +144,39 @@ namespace _2022._07._13_HW
             DataRowView selectedItem = comboBox1.SelectedItem as DataRowView;
             if (selectedItem.Row.Field<string>("InvariantName") == "Npgsql")
             {
-                ExecuteQuery($"INSERT INTO FruitsAndVegetables VALUES (DEFAULT, '{textBox1.Text}', {Convert.ToInt32(textBox2.Text)}, '{textBox3.Text}', {Convert.ToInt32(textBox4.Text)})");
+                string query = $"INSERT INTO FruitsAndVegetables (Name, Type, Color, Calories) VALUES (@Name, @Type, @Color, @Calories)";
+                DbCommand dbCommand = providerFactory.CreateCommand();
+                NpgsqlCommand command = (NpgsqlCommand)dbCommand;
+                command.Parameters.AddWithValue("@Name", textBox1.Text);
+                command.Parameters.AddWithValue("@Type", Convert.ToInt32(textBox2.Text));
+                command.Parameters.AddWithValue("@Color", textBox3.Text);
+                command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
+                command.CommandText = query;
+                ExecuteQuery2(command);
             }
             if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SqlClient")
             {
-                ExecuteQuery($"INSERT INTO FruitsAndVegetables VALUES (N'{textBox1.Text}', {Convert.ToInt32(textBox2.Text)}, N'{textBox3.Text}', {Convert.ToInt32(textBox4.Text)})");
+                string query = $"INSERT INTO FruitsAndVegetables (Name, Type, Color, Calories) VALUES (@Name, @Type, @Color, @Calories)";
+                DbCommand dbCommand = providerFactory.CreateCommand();
+                SqlCommand command = (SqlCommand)dbCommand;
+                command.Parameters.AddWithValue("@Name", textBox1.Text);
+                command.Parameters.AddWithValue("@Type", Convert.ToInt32(textBox2.Text));
+                command.Parameters.AddWithValue("@Color", textBox3.Text);
+                command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
+                command.CommandText = query;
+                ExecuteQuery2(command);
+            }
+            if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SQLite")
+            {
+                string query = $"INSERT INTO FruitsAndVegetables (Name, Type, Color, Calories) VALUES (@Name, @Type, @Color, @Calories)";
+                DbCommand dbCommand = providerFactory.CreateCommand();
+                SQLiteCommand command = (SQLiteCommand)dbCommand;
+                command.Parameters.AddWithValue("@Name", textBox1.Text);
+                command.Parameters.AddWithValue("@Type", Convert.ToInt32(textBox2.Text));
+                command.Parameters.AddWithValue("@Color", textBox3.Text);
+                command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
+                command.CommandText = query;
+                ExecuteQuery2(command);
             }
         }
 
