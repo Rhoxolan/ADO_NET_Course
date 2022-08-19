@@ -24,7 +24,7 @@ namespace _2022._07._13_HW
         private void Form1_Load(object sender, EventArgs e)
         {
             //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
-            //Подгрузка двух вариантов подключений к базам данных
+            //Подгрузка трёх вариантов подключений к базам данных
             DbProviderFactories.RegisterFactory("System.Data.SqlClient", SqlClientFactory.Instance);
             DbProviderFactories.RegisterFactory("Npgsql", NpgsqlFactory.Instance);
             DbProviderFactories.RegisterFactory("System.Data.SQLite", SQLiteFactory.Instance);
@@ -141,7 +141,7 @@ namespace _2022._07._13_HW
         private async void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = await Task.Run(() => ExecuteQuery("SELECT * FROM FruitsAndVegetables")); //Запускаем выполнение асинхронного метода
+            dataGridView1.DataSource = await Task.Run(() => ExecuteQuery("SELECT * FROM FruitsAndVegetables")); //Запускаем выполнение асинхронного метода, запуск метода в отдельном потоке
         }
 
         private async void button2_Click(object sender, EventArgs e)
@@ -158,7 +158,7 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
                 dataGridView1.DataSource = null;
-                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
+                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода, запуск метода в отдельном потоке
             }
             if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SqlClient")
             {
@@ -171,7 +171,7 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
                 dataGridView1.DataSource = null;
-                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
+                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода, запуск метода в отдельном потоке
             }
             if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SQLite")
             {
@@ -184,7 +184,7 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
                 dataGridView1.DataSource = null;
-                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
+                dataGridView1.DataSource = await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода, запуск метода в отдельном потоке
             }
         }
 
@@ -192,7 +192,7 @@ namespace _2022._07._13_HW
         {
             int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = await Task.Run(() => ExecuteQuery($"DELETE FROM FruitsAndVegetables WHERE Id = {id}"));  //Запускаем выполнение асинхронного метода
+            dataGridView1.DataSource = await Task.Run(() => ExecuteQuery($"DELETE FROM FruitsAndVegetables WHERE Id = {id}"));  //Запускаем выполнение асинхронного метода, запуск метода в отдельном потоке
         }
     }
 }
