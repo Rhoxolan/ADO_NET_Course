@@ -51,8 +51,10 @@ namespace _2022._07._13_HW
         }
 
         //Универсальный метод для выполнения запросов
-        private async void ExecuteQuery(string query)
+        private void ExecuteQuery(string query)
         {
+            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
+            //Thread.Sleep(5000);
             using (DbConnection connection = providerFactory.CreateConnection())
             {
                 connection.ConnectionString = connStr;
@@ -63,11 +65,11 @@ namespace _2022._07._13_HW
                 DbDataReader reader = null;
                 try
                 {
-                    await connection?.OpenAsync();
-                    reader = await command.ExecuteReaderAsync();
+                    connection?.Open();
+                    reader = command.ExecuteReader();
                     int line = 0;
                     dt2.Columns.Clear();
-                    while (await reader.ReadAsync())
+                    while (reader.Read())
                     {
                         if (line == 0)
                             for (int i = 0; i < reader.FieldCount; i++)
@@ -104,7 +106,7 @@ namespace _2022._07._13_HW
                 DbDataReader reader = null;
                 try
                 {
-                    connection?.OpenAsync();
+                    connection?.Open();
                     reader = command.ExecuteReader();
                     int line = 0;
                     dt2.Columns.Clear();
@@ -134,12 +136,12 @@ namespace _2022._07._13_HW
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            ExecuteQuery("SELECT * FROM FruitsAndVegetables");
+            await Task.Run(() => ExecuteQuery("SELECT * FROM FruitsAndVegetables")); //Запускаем выполнение асинхронного метода
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             DataRowView selectedItem = comboBox1.SelectedItem as DataRowView;
             if (selectedItem.Row.Field<string>("InvariantName") == "Npgsql")
@@ -152,7 +154,7 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Color", textBox3.Text);
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
-                ExecuteQuery2(command);
+                await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
             }
             if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SqlClient")
             {
@@ -164,7 +166,7 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Color", textBox3.Text);
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
-                ExecuteQuery2(command);
+                await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
             }
             if (selectedItem.Row.Field<string>("InvariantName") == "System.Data.SQLite")
             {
@@ -176,14 +178,14 @@ namespace _2022._07._13_HW
                 command.Parameters.AddWithValue("@Color", textBox3.Text);
                 command.Parameters.AddWithValue("@Calories", Convert.ToInt32(textBox4.Text));
                 command.CommandText = query;
-                ExecuteQuery2(command);
+                await Task.Run(() => ExecuteQuery2(command));   //Запускаем выполнение асинхронного метода
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["Id"].Value);
-            ExecuteQuery($"DELETE FROM FruitsAndVegetables WHERE Id = {id}");
+            await Task.Run(() => ExecuteQuery($"DELETE FROM FruitsAndVegetables WHERE Id = {id}"));  //Запускаем выполнение асинхронного метода
         }
     }
 }
