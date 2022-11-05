@@ -57,6 +57,15 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -66,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -104,6 +114,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.numericUpDown3);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.textBox10);
+            this.tabPage2.Controls.Add(this.button11);
+            this.tabPage2.Controls.Add(this.textBox9);
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.numericUpDown1);
             this.tabPage2.Controls.Add(this.textBox3);
@@ -121,6 +138,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button10);
+            this.tabPage3.Controls.Add(this.textBox8);
             this.tabPage3.Controls.Add(this.button6);
             this.tabPage3.Controls.Add(this.button3);
             this.tabPage3.Controls.Add(this.textBox1);
@@ -243,7 +262,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(415, 192);
+            this.button6.Location = new System.Drawing.Point(415, 305);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(119, 23);
             this.button6.TabIndex = 5;
@@ -253,7 +272,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(415, 226);
+            this.button7.Location = new System.Drawing.Point(415, 344);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(119, 23);
             this.button7.TabIndex = 11;
@@ -352,6 +371,86 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(415, 166);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(119, 20);
+            this.textBox8.TabIndex = 6;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(415, 192);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(119, 23);
+            this.button10.TabIndex = 7;
+            this.button10.Text = "Edit Row";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(415, 249);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(119, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "Edit Row";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(415, 223);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(84, 20);
+            this.textBox9.TabIndex = 12;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(505, 223);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(84, 20);
+            this.textBox10.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(415, 207);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Firstname";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(502, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Surname";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(595, 207);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Year Of Birth";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(595, 223);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(97, 20);
+            this.numericUpDown3.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +471,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -407,6 +507,15 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label7;
     }
 }
 
