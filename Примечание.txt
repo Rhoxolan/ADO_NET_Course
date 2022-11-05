@@ -18,3 +18,6 @@ HW (WinForms, MS SQL, PostgreSQL, SQLite). Создан аналог БД "Fruit
 15.07.2022 LINQ to SQL
 PW (Console (LINQPad), MS SQL). Создана БД "Countries". Работа с LINQ to SQL через LINQPad. Работа с синтаксисом запросов.
 HW (Console (LINQPad), MS SQL). Нормализована  БД "Countries". Работа с LINQ to SQL через LINQPad. Работа с синтаксисом методов.
+
+18.07.2022 Entity Framework. Ч. 1
+PW (WinForms, MS SQL). Пересоздана БД "BooksLibrary". Работа с Entity Framework в приложении Windows Forms .NET Framework 4.8. Пример создания EDM с подходом Database First.

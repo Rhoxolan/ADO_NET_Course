@@ -134,7 +134,7 @@ namespace _2022._07._18_PW
 
         private async void button8_Click(object sender, EventArgs e)
         {
-            if (dataGridView3.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
                 using (BooksLibraryEntities context = new BooksLibraryEntities())
                 {
@@ -212,6 +212,29 @@ namespace _2022._07._18_PW
                         var authors = context.Authors.Local;
                         dataGridView3.DataSource = null;
                         dataGridView3.DataSource = authors.Select(t => new { t.Firstname, t.Surname, t.YearOfBirth }).ToList();
+                    }
+                }
+            }
+        }
+
+        private async void button12_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                using (BooksLibraryEntities context = new BooksLibraryEntities())
+                {
+                    await context.Books.LoadAsync();
+                    Book book = context.Books.Local.Where(a => a.Title == dataGridView1.SelectedRows[0].Cells["Title"].Value.ToString()).FirstOrDefault();
+                    if (book != null)
+                    {
+                        book.Title = textBox14.Text;
+                        book.Author = context.Authors.Local.Where(a => a.Firstname == textBox12.Text && a.Surname == textBox11.Text).FirstOrDefault();
+                        book.Pages = (int)numericUpDown4.Value;
+                        book.Publisher = context.Publishers.Local.Where(p => p.Name == textBox13.Text).FirstOrDefault();
+                        await context.SaveChangesAsync();
+                        var books = context.Books.Local;
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = books.Select(t => new { t.Title, Author = $"{t.Author.Firstname} {t.Author.Surname}", Publisher = t.Publisher.Name, t.Pages }).ToList();
                     }
                 }
             }
