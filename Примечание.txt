@@ -24,3 +24,6 @@ PW (WinForms, MS SQL). Пересоздана БД "BooksLibrary". Работа 
 
 20.07.2022 Entity Framework. Ч. 2
 PW (WinForms, MS SQL). Работа с БД "BooksLibrary". Работа с Entity Framework в приложении Windows Forms .NET 6. Пример создания EDM с подходом Database First.
+
+22.07.2022 Entity Framework. Ч. 3
+PW (WinForms, MS SQL). Создана БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 6. Пример создания EDM с подходом Code First. Пример приминения тонкой настройки Entity Framework.
