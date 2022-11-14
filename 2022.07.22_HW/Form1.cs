@@ -12,15 +12,22 @@ namespace _2022._07._22_HW
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Вроде как пример явной загрузки - дочитать презентацию и выяснить
             using GamesContext context = new();
             context.Games.Load();
             context.Publishers.Load();
             context.Genres.Load();
             listBox2.DisplayMember = "Name";
             listBox3.DisplayMember = "Name";
-            listBox1.DataSource = context.Games.Local.ToList();
+            listBox1.DataSource = context.Games.Local.Select(g => $"{g.Name}, {g.Publisher.Name}, {g.Genre.Name}").ToList();
             listBox2.DataSource = context.Publishers.Local.ToList();
             listBox3.DataSource = context.Genres.Local.ToList();
+
+            //Пример безотложной загрузки
+            //using GamesContext context = new();
+            //var games =
+            //    context.Games.Include("Genre").ToList();
+            //listBox1.DataSource = games.Select(g => $"{g.Name}, {g.Genre.Name}").ToList();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,13 +58,13 @@ namespace _2022._07._22_HW
             Game game = new()
             {
                 Name = textBox1.Text,
-                Genre = context.Genres.Local.Where(g => g.Name == textBox2.Text).First(),
-                Publisher = context.Publishers.Local.Where(p => p.Name == textBox3.Text).First()
+                Genre = context.Genres.Local.Where(g => g.Name == textBox3.Text).FirstOrDefault(),
+                Publisher = context.Publishers.Local.Where(p => p.Name == textBox2.Text).FirstOrDefault()
             };
 
             context.Games.Add(game);
             context.SaveChangesAsync();
-            listBox1.DataSource = context.Games.Local.ToList();
+            listBox1.DataSource = context.Games.Local.Select(g => $"{g.Name}, {g.Publisher.Name}, {g.Genre.Name}").ToList();
         }
     }
 }

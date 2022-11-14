@@ -13,10 +13,5 @@
         public virtual Publisher Publisher { get; set; } = null!;
 
         public virtual Genre Genre { get; set; } = null!;
-
-        public override string ToString()
-        {
-            return $"{Name}, {Publisher}, {Genre}";
-        }
     }
 }
