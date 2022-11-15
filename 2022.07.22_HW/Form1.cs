@@ -12,7 +12,7 @@ namespace _2022._07._22_HW
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Вроде как пример явной загрузки - дочитать презентацию и выяснить
+            //Явная загрузка
             using GamesContext context = new();
             context.Games.Load();
             context.Publishers.Load();
@@ -22,6 +22,13 @@ namespace _2022._07._22_HW
             listBox1.DataSource = context.Games.Local.Select(g => $"{g.Name}, {g.Publisher.Name}, {g.Genre.Name}").ToList();
             listBox2.DataSource = context.Publishers.Local.ToList();
             listBox3.DataSource = context.Genres.Local.ToList();
+
+            //Вариант явной загрузки
+            //using GamesContext context = new();
+            //var game = context.Games.Where(g => g.Id == 1).First();
+            //context.Entry(game).Reference(g => g.Genre).Load();
+            //string g = $"{game.Name} {game.Genre.Name}";
+            //MessageBox.Show(g);
 
             //Пример безотложной загрузки
             //using GamesContext context = new();
