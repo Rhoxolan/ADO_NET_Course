@@ -6,6 +6,6 @@
 
         public string Name { get; set; } = string.Empty;
 
-        public virtual ICollection<Publisher>? Publishers { get; set; }
+        public virtual ICollection<City>? Cities { get; set; }
     }
 }

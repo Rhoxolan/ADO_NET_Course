@@ -6,7 +6,7 @@
 
         public string Name { get; set; } = string.Empty;
 
-        public virtual Country Country { get; set; } = null!;
+        public virtual City City { get; set; } = null!;
 
         public virtual ICollection<Game>? Games { get; set; }
     }

@@ -12,6 +12,8 @@ namespace _2022._08._08_PW.Models
 
         public DbSet<Country> Сountries { get; set; } = null!;
 
+        public DbSet<City> Cities { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Games; Integrated Security=True;");
     }

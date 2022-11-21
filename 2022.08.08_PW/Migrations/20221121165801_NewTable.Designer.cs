@@ -11,8 +11,8 @@ using _2022._08._08_PW.Models;
 namespace _2022._08._08PW.Migrations
 {
     [DbContext(typeof(GamesContext))]
-    [Migration("20221121105450_Create")]
-    partial class Create
+    [Migration("20221121165801_NewTable")]
+    partial class NewTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,28 @@ namespace _2022._08._08PW.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("_2022._08._08_PW.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
 
             modelBuilder.Entity("_2022._08._08_PW.Models.Country", b =>
                 {
@@ -93,7 +115,7 @@ namespace _2022._08._08PW.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CountryId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -102,9 +124,20 @@ namespace _2022._08._08PW.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("CityId");
 
                     b.ToTable("Publishers");
+                });
+
+            modelBuilder.Entity("_2022._08._08_PW.Models.City", b =>
+                {
+                    b.HasOne("_2022._08._08_PW.Models.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
                 });
 
             modelBuilder.Entity("_2022._08._08_PW.Models.Game", b =>
@@ -128,18 +161,23 @@ namespace _2022._08._08PW.Migrations
 
             modelBuilder.Entity("_2022._08._08_PW.Models.Publisher", b =>
                 {
-                    b.HasOne("_2022._08._08_PW.Models.Country", "Country")
+                    b.HasOne("_2022._08._08_PW.Models.City", "City")
                         .WithMany("Publishers")
-                        .HasForeignKey("CountryId")
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Country");
+                    b.Navigation("City");
+                });
+
+            modelBuilder.Entity("_2022._08._08_PW.Models.City", b =>
+                {
+                    b.Navigation("Publishers");
                 });
 
             modelBuilder.Entity("_2022._08._08_PW.Models.Country", b =>
                 {
-                    b.Navigation("Publishers");
+                    b.Navigation("Cities");
                 });
 
             modelBuilder.Entity("_2022._08._08_PW.Models.Genre", b =>

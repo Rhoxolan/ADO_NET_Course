@@ -5,7 +5,7 @@
 namespace _2022._08._08PW.Migrations
 {
     /// <inheritdoc />
-    public partial class Create : Migration
+    public partial class NewTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,7 +37,7 @@ namespace _2022._08._08PW.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Publishers",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -47,11 +47,31 @@ namespace _2022._08._08PW.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publishers", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Publishers_Сountries_CountryId",
+                        name: "FK_Cities_Сountries_CountryId",
                         column: x => x.CountryId,
                         principalTable: "Сountries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Publishers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CityId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publishers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Publishers_Cities_CityId",
+                        column: x => x.CityId,
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -84,6 +104,11 @@ namespace _2022._08._08PW.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Cities_CountryId",
+                table: "Cities",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Games_GenreId",
                 table: "Games",
                 column: "GenreId");
@@ -94,9 +119,9 @@ namespace _2022._08._08PW.Migrations
                 column: "PublisherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Publishers_CountryId",
+                name: "IX_Publishers_CityId",
                 table: "Publishers",
-                column: "CountryId");
+                column: "CityId");
         }
 
         /// <inheritdoc />
@@ -110,6 +135,9 @@ namespace _2022._08._08PW.Migrations
 
             migrationBuilder.DropTable(
                 name: "Publishers");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
 
             migrationBuilder.DropTable(
                 name: "Сountries");
