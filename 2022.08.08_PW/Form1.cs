@@ -1,4 +1,8 @@
 using _2022._08._08_PW.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Immutable;
+using System.Text;
 
 namespace _2022._08._08_PW
 {
@@ -60,6 +64,31 @@ namespace _2022._08._08_PW
 
             await context.Games.AddAsync(game);
             await context.SaveChangesAsync();
+        }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            //Пример использования запросов SQL в Entity Framework Core 7
+
+            using GamesContext context = new();
+            await context.Genres.LoadAsync();
+            await context.Cities.LoadAsync();
+            await context.Games.LoadAsync();
+            await context.Сountries.LoadAsync();
+            await context.Publishers.LoadAsync();
+            SqlParameter parameter = new("@name", textBox10.Text);
+            var game = await context.Games.FromSqlRaw("SELECT * FROM Games WHERE Name LIKE @name", parameter).FirstAsync();
+            StringBuilder stringBuilder = new(game.Name + Environment.NewLine);
+            stringBuilder.AppendLine("Жанр: " + game.Genre.Name);
+            stringBuilder.AppendLine("Издатель: " + game.Publisher.Name);
+            stringBuilder.AppendLine("Город: " + game.Publisher.City.Name);
+            stringBuilder.AppendLine("Страна: " + game.Publisher.City.Country.Name);
+            MessageBox.Show(stringBuilder.ToString());
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            using GamesContext context = new();
         }
     }
 }

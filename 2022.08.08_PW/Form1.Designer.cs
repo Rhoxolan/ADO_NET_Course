@@ -54,6 +54,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -277,11 +282,61 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(257, 223);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(230, 15);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Отобразить всю информацию про игру:";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(257, 241);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(122, 23);
+            this.textBox10.TabIndex = 27;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(257, 270);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(90, 23);
+            this.button6.TabIndex = 28;
+            this.button6.Text = "Отобразить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(619, 9);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(272, 33);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Отобразить все студии и количество жанров, в которых студия выпустила больше всег" +
+    "о игр:";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(619, 44);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 30;
+            this.button7.Text = "Go!";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1289, 343);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label12);
@@ -343,5 +398,10 @@
         private Label label12;
         private TextBox textBox9;
         private Button button5;
+        private Label label13;
+        private TextBox textBox10;
+        private Button button6;
+        private Label label14;
+        private Button button7;
     }
 }
