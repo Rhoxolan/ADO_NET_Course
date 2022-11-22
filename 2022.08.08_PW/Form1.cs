@@ -31,7 +31,7 @@ namespace _2022._08._08_PW
         private async void button3_Click(object sender, EventArgs e)
         {
             using GamesContext context = new();
-            
+
             City city = new City { Name = textBox3.Text, Country = context.Сountries.Where(c => c.Name == textBox4.Text).FirstOrDefault()! };
 
             await context.Cities.AddAsync(city);
@@ -97,20 +97,18 @@ namespace _2022._08._08_PW
             await context.Publishers.LoadAsync();
 
 
-
-
-
-            var query = context.Publishers.GroupJoin(context.Games,
+            var top = context.Publishers.GroupJoin(context.Games,
                 publisher => publisher.Name,
                 game => game.Publisher.Name,
                 (publisher, games) => new
                 {
                     publisher.Name,
-                    Genres = games.Select(g => g.Genre)
-                });
+                    Genre = games.OrderBy(x => x.Genre).Select(g => g.Genre).First()
+                }).ToList();
 
 
-            
+
+
         }
     }
 }
