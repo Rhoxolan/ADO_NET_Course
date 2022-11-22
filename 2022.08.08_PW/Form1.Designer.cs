@@ -331,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 343);
+            this.ClientSize = new System.Drawing.Size(891, 343);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.button6);
@@ -364,7 +364,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Games";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -96,28 +96,21 @@ namespace _2022._08._08_PW
             await context.Сountries.LoadAsync();
             await context.Publishers.LoadAsync();
 
-
             var top = context.Publishers.GroupJoin(context.Games,
                 publisher => publisher.Name,
                 game => game.Publisher.Name,
                 (publisher, games) => new
                 {
                     publisher.Name,
-                    Genre = games.OrderBy(x => x.Genre).Select(g => g.Genre).First()
+                    Genre = games.OrderBy(x => x.Genre).Select(g => g.Genre.Name).First()
                 }).ToList();
 
+            DataGridView dataGridView = new DataGridView
+            {
+                DataSource = top
+            };
 
-
-
+            new FormTopGenres(dataGridView).Show(this);
         }
     }
 }
-
-//var query = context.Publishers.GroupJoin(context.Games,
-//    publisher => publisher.Name,
-//    game => game.Publisher.Name,
-//    (publisher, games) => new
-//    {
-//        publisher.Name,
-//        Genres = games.Select(g => g.Genre)
-//    }).ToList();
