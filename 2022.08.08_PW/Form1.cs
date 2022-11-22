@@ -2,6 +2,7 @@ using _2022._08._08_PW.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
 
 namespace _2022._08._08_PW
@@ -89,6 +90,36 @@ namespace _2022._08._08_PW
         private async void button7_Click(object sender, EventArgs e)
         {
             using GamesContext context = new();
+            await context.Genres.LoadAsync();
+            await context.Cities.LoadAsync();
+            await context.Games.LoadAsync();
+            await context.Сountries.LoadAsync();
+            await context.Publishers.LoadAsync();
+
+
+
+
+
+            var query = context.Publishers.GroupJoin(context.Games,
+                publisher => publisher.Name,
+                game => game.Publisher.Name,
+                (publisher, games) => new
+                {
+                    publisher.Name,
+                    Genres = games.Select(g => g.Genre)
+                });
+
+
+            
         }
     }
 }
+
+//var query = context.Publishers.GroupJoin(context.Games,
+//    publisher => publisher.Name,
+//    game => game.Publisher.Name,
+//    (publisher, games) => new
+//    {
+//        publisher.Name,
+//        Genres = games.Select(g => g.Genre)
+//    }).ToList();
