@@ -16,6 +16,10 @@ namespace _2022._08._10_PW.Models
 
         public DbSet<ShowTop3PublishersPerGames> ShowTop3PublishersPerGamesCollection { get; set; } = null!;
 
+        public DbSet<ShowTopPublisherPerGames> ShowTopPublisherPerGamesCollection { get; set; } = null!;
+
+        public DbSet<ShowTopGenresPerGames> ShowTopGenresPerGamesCollection { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Games; Integrated Security=True;");
 
@@ -24,6 +28,14 @@ namespace _2022._08._10_PW.Models
             modelBuilder.Entity<ShowTop3PublishersPerGames>((act) => {
                 act.HasNoKey();
                 act.ToView("ShowTop3PublishersPerGames");
+            });
+            modelBuilder.Entity<ShowTopPublisherPerGames>((act) => {
+                act.HasNoKey();
+                act.ToView("ShowTopPublisherPerGames");
+            });
+            modelBuilder.Entity<ShowTopGenresPerGames>((act) => {
+                act.HasNoKey();
+                act.ToView("ShowTopGenresPerGames");
             });
         }
     }
