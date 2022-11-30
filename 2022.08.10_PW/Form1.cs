@@ -53,5 +53,14 @@ namespace _2022._08._10_PW
             var topGenresPerGames = await context.ShowTopGenresPerGamesCollection.ToArrayAsync();
             dataGridView1.DataSource = new ArrayList() { topGenresPerGames.First() };
         }
+
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            //Показать топ-3 самых популярных стилей по количеству продаж;
+
+            using GamesContext context = new();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = await context.ShowTop3StylesPerSalesCollection.ToListAsync();
+        }
     }
 }

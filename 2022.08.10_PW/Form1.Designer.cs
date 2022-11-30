@@ -37,6 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,11 +123,31 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Показать самый популярный стиль по количеству игр";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(12, 307);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(102, 23);
+            this.button5.TabIndex = 10;
+            this.button5.Text = "Show";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(12, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(331, 33);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Показать топ-3 самых популярных стилей по количеству продаж";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
@@ -154,5 +176,7 @@
         private Label label3;
         private Button button4;
         private Label label4;
+        private Button button5;
+        private Label label5;
     }
 }

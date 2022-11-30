@@ -22,6 +22,8 @@ namespace _2022._08._10_PW.Models
 
         public DbSet<ShowTopGenresPerGames> ShowTopGenresPerGamesCollection { get; set; } = null!;
 
+        public DbSet<ShowTop3StylesPerSales> ShowTop3StylesPerSalesCollection { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Games; Integrated Security=True;");
 
@@ -38,6 +40,10 @@ namespace _2022._08._10_PW.Models
             modelBuilder.Entity<ShowTopGenresPerGames>((act) => {
                 act.HasNoKey();
                 act.ToView("ShowTopGenresPerGames");
+            });
+            modelBuilder.Entity<ShowTop3StylesPerSales>((act) => {
+                act.HasNoKey();
+                act.ToView("ShowTop3StylesPerSales");
             });
 
             modelBuilder.Entity<Sale>();
