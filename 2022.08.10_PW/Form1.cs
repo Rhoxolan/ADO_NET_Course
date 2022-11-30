@@ -15,13 +15,6 @@ namespace _2022._08._10_PW
         {
             using GamesContext context = new();
             await context.Database.EnsureCreatedAsync();
-
-            Sale sale = new Sale
-            {
-                Date = DateTime.Now,
-                Game = await context.Games.FindAsync(1)
-            };
-            await context.SaveChangesAsync();
         }
 
         private async void button1_Click(object sender, EventArgs e)

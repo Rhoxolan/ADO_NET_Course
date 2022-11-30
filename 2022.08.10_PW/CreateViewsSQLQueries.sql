@@ -24,3 +24,12 @@ FROM Genres, Games
 WHERE Games.GenreId = Genres.Id
 GROUP BY Genres.Name
 ORDER BY COUNT(Games.Id) DESC
+
+
+
+CREATE TABLE Sales
+(
+Id INT PRIMARY KEY IDENTITY NOT NULL,
+Date DATE NOT NULL,
+GameId INT NOT NULL REFERENCES Games(Id)
+)

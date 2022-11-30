@@ -39,6 +39,8 @@ namespace _2022._08._10_PW.Models
                 act.HasNoKey();
                 act.ToView("ShowTopGenresPerGames");
             });
+
+            modelBuilder.Entity<Sale>();
         }
     }
 }

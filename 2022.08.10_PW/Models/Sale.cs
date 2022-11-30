@@ -12,6 +12,8 @@ namespace _2022._08._10_PW.Models
 
         public DateTime Date { get; set; }
 
+        public int GameId { get; set; }
+
         public virtual Game Game { get; set; } = null!;
     }
 }
