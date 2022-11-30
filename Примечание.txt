@@ -29,5 +29,8 @@ PW (WinForms, MS SQL). Работа с БД "BooksLibrary". Работа с Enti
 PW (WinForms, MS SQL). Создана БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 6. Пример создания EDM с подходом Code First. Пример приминения тонкой настройки Entity Framework.
 HW (WinForms, MS SQL). Дополнена БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 7. Пример создания EDM с подходом Code First с использованием механизма миграций. Пример явной и безотложной загрузки данных из связанных сущностей.
 
-08.08.2022 Entity Framework. Ч. 3
+08.08.2022 Entity Framework. Ч. 4
 PW (WinForms, MS SQL). Дополнена БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 7. Пример создания EDM с подходом Code First с использованием механизма миграций. Пример использования запросов SQL в Entity Framework Core 7. Пример работы с методом Enumerable.GroupJoin.
+
+10.08.2022 Entity Framework. Ч. 5
+PW (WinForms, MS SQL).  Дополнена БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 7. Работа с представлениями (VIEW). Пример работы с API Fluent.

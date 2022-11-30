@@ -62,5 +62,40 @@ namespace _2022._08._10_PW
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = await context.ShowTop3StylesPerSalesCollection.ToListAsync();
         }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            //Показать самый популярный стиль по количеству продаж;
+
+            using GamesContext context = new();
+            var topStylePerSale = await context.ShowTop3StylesPerSalesCollection.ToArrayAsync();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = new ArrayList() { topStylePerSale.First() };
+        }
+
+        private async void button7_Click(object sender, EventArgs e)
+        {
+            //Показать самую популярную игру по количеству продаж
+
+            using GamesContext context = new();
+
+            //Вариант 1
+            var topGamePerSales = await context.Games.OrderByDescending(x => x.Sales!.Count()).FirstAsync();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = new ArrayList() { topGamePerSales };
+
+            //Вариант 2
+            var gameTop = await context.Games.GroupJoin(context.Sales,
+                game => game.Id,
+                sale => sale.GameId,
+                (game, sales) => new
+                {
+                    game.Name,
+                    Sales = sales.Count()
+                }).ToListAsync();
+            var game = gameTop.OrderByDescending(x => x.Sales).First();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = new ArrayList() { game };
+        }
     }
 }

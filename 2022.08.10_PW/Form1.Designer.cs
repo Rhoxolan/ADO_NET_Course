@@ -39,6 +39,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +70,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(349, 9);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(439, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(439, 584);
             this.dataGridView1.TabIndex = 2;
             // 
             // label2
@@ -141,11 +145,51 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Показать топ-3 самых популярных стилей по количеству продаж";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(12, 382);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(102, 23);
+            this.button6.TabIndex = 12;
+            this.button6.Text = "Show";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(12, 346);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(288, 33);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Показать самый популярный стиль по количеству продаж";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(12, 455);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(102, 23);
+            this.button7.TabIndex = 14;
+            this.button7.Text = "Show";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(12, 419);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(288, 33);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Показать самую популярную игру по количеству продаж";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 605);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button4);
@@ -178,5 +222,9 @@
         private Label label4;
         private Button button5;
         private Label label5;
+        private Button button6;
+        private Label label6;
+        private Button button7;
+        private Label label7;
     }
 }
