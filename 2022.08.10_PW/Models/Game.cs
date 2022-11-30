@@ -10,6 +10,8 @@
 
         public int GenreId { get; set; }
 
+        public ICollection<Sale>? Sales { get; set; }
+
         public virtual Publisher Publisher { get; set; } = null!;
 
         public virtual Genre Genre { get; set; } = null!;

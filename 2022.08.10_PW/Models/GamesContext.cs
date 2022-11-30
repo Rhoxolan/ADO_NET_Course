@@ -14,6 +14,8 @@ namespace _2022._08._10_PW.Models
 
         public DbSet<City> Cities { get; set; } = null!;
 
+        public DbSet<Sale> Sales { get; set; } = null!;
+
         public DbSet<ShowTop3PublishersPerGames> ShowTop3PublishersPerGamesCollection { get; set; } = null!;
 
         public DbSet<ShowTopPublisherPerGames> ShowTopPublisherPerGamesCollection { get; set; } = null!;
