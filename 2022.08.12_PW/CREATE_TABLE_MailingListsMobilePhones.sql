@@ -1,0 +1,6 @@
+CREATE TABLE "MailingListsMobilePhones" (
+	"Id"	INTEGER NOT NULL UNIQUE,
+	"BuyerId"	INTEGER NOT NULL,
+	FOREIGN KEY("BuyerId") REFERENCES "Buyers"("Id"),
+	PRIMARY KEY("Id" AUTOINCREMENT)
+)
