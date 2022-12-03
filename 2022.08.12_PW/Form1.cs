@@ -55,10 +55,12 @@ namespace _2022._08._12_PW
         private void button3_Click(object sender, EventArgs e)
         {
             using SQLiteConnection sqliteConnection = new(connStr);
+            var parameters = new { paramId = numericUpDown1.Value };
+            string query = "SELECT * FROM Cities WHERE Id = @paramId"; //Работа с параметрами
             try
             {
-                string query = "SELECT * FROM Cities";
-                dataGridView1.DataSource = sqliteConnection.Query<City>(query).ToList();
+                var city = sqliteConnection.QuerySingle(query, parameters);
+                dataGridView1.DataSource = new ArrayList { new { city.Name } }; //Работа с типом dynamic
             }
             catch (Exception ex)
             {
@@ -69,15 +71,6 @@ namespace _2022._08._12_PW
             {
                 sqliteConnection?.Close();
             }
-        }
-
-        public class City
-        {
-            public required int Id { get; set; }
-
-            public required string Name { get; set; }
-
-            public required int CountryId { get; set; }
         }
     }
 }
