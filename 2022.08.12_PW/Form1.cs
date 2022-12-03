@@ -95,19 +95,26 @@ namespace _2022._08._12_PW
             }
         }
 
-        private async void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
+            //Метод написан для тестирования. Асинхронные методы (например ExecuteAsync) не работют из-за ограничений SQLite.
+            //https://learn.microsoft.com/ru-ru/dotnet/standard/data/sqlite/async
+
+            //Рекомендации с документации (Cache=Shared и WAL) не дали ощутимого эффекта, приложение "тормозит" на несколько секунд. Тем не менее, 500 000 записей
+            //добавляются достаточно быстро - по ощущениям не более 5-и секунд.
+
             using SQLiteConnection sqliteConnection = new(connStr);
             StringBuilder queryStringBuilder = new();
-            queryStringBuilder.AppendLine("""INSERT INTO Countries (Name) VALUES ("USA")""");
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    queryStringBuilder.AppendLine("""("Poland"),""");
-            //}
+            queryStringBuilder.AppendLine("""INSERT INTO Countries (Name) VALUES""");
+            for (int i = 0; i < 500000; i++)
+            {
+                queryStringBuilder.AppendLine("""("Poland"),""");
+            }
+            queryStringBuilder.AppendLine("""("Poland")""");
             MessageBox.Show("Формирование запроса завершено!");
             try
             {
-                var affectedRows = await sqliteConnection.ExecuteAsync(queryStringBuilder.ToString());
+                var affectedRows = sqliteConnection.Execute(queryStringBuilder.ToString());
                 MessageBox.Show($"Affected Rows: {affectedRows}");
             }
             catch (Exception ex)
