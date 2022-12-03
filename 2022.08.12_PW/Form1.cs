@@ -1,4 +1,5 @@
 using Dapper;
+using System.Collections;
 using System.Data.SQLite;
 
 namespace _2022._08._12_PW
@@ -57,7 +58,7 @@ namespace _2022._08._12_PW
             try
             {
                 string query = "SELECT * FROM Cities";
-                // Попробовать поработать с dynamic
+                dataGridView1.DataSource = sqliteConnection.Query<City>(query).ToList();
             }
             catch (Exception ex)
             {
@@ -68,6 +69,15 @@ namespace _2022._08._12_PW
             {
                 sqliteConnection?.Close();
             }
+        }
+
+        public class City
+        {
+            public required int Id { get; set; }
+
+            public required string Name { get; set; }
+
+            public required int CountryId { get; set; }
         }
     }
 }
