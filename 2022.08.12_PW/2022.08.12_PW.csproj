@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="MailingListsPromotions.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
