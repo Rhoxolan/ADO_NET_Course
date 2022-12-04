@@ -34,3 +34,6 @@ PW (WinForms, MS SQL). Дополнена БД "Games". Работа с Entity F
 
 10.08.2022 Entity Framework. Ч. 5
 PW (WinForms, MS SQL).  Дополнена БД "Games". Работа с Entity Framework в приложении Windows Forms .NET 7. Работа с представлениями (VIEW). Пример работы с API Fluent.
+
+12.08.2022 Dapper
+PW (WinForms, SQLite). Создана БД "MailingListsPromotions". Работа с Dapper, пример работы с параметрами в Dapper, пример работы Dapper.DynamicParameters. Пример работы с синхронными SQLite методами по рекомендациям с документации Microsoft ввиду ограничений асинхронного режима SQLite (см. комментарий в Form1.cs). Пример работы с типом dynamic.

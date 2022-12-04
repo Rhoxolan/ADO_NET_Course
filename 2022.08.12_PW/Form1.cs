@@ -203,11 +203,47 @@ namespace _2022._08._12_PW
         private void button9_Click(object sender, EventArgs e)
         {
             using SQLiteConnection sqliteConnection = new(connStr);
-            string querySelectCountries = "SELECT * FROM Countries";
-            var countries = sqliteConnection.Query(querySelectCountries); //Пример работы с dynamic
-            dynamic country = countries.First(c => c.Id == (int)numericUpDown4.Value);
-            country.FullName = textBox5.Text;
+            try
+            {
+                string querySelectCountries = "SELECT * FROM Countries";
+                var countries = sqliteConnection.Query(querySelectCountries); //Пример работы с dynamic
+                dynamic country = countries.First(c => c.Id == (int)numericUpDown4.Value);
+                country.FullName = textBox5.Text;
+                var parameters = new DynamicParameters(country);                              //Пример работы с Dapper.DynamicParameters
+                string updateCountries = "UPDATE Countries SET Name = @Name WHERE Id = @Id";
+                int affectedRows = sqliteConnection.Execute(updateCountries, parameters);
+                MessageBox.Show($"Affected Rows: {affectedRows}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                sqliteConnection?.Close();
+            }
+            finally
+            {
+                sqliteConnection?.Close();
+            }
+        }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            using SQLiteConnection sqliteConnection = new(connStr);
+            var parameters = new { paramId = numericUpDown5.Value };
+            string query = "DELETE FROM Countries WHERE Id = @paramId"; //Работа с параметрами
+            try
+            {
+                var affectedRows = sqliteConnection.Execute(query, parameters);
+                MessageBox.Show($"Affected Rows: {affectedRows}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                sqliteConnection?.Close();
+            }
+            finally
+            {
+                sqliteConnection?.Close();
+            }
         }
     }
 }

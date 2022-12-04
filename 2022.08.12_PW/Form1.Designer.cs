@@ -57,11 +57,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -321,11 +326,50 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "Id страны";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 546);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(91, 15);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Удалить страну";
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Location = new System.Drawing.Point(12, 583);
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(83, 23);
+            this.numericUpDown5.TabIndex = 30;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 565);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 15);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Id страны";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(102, 583);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(244, 23);
+            this.button10.TabIndex = 32;
+            this.button10.Text = "Удалить";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 629);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.numericUpDown5);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.numericUpDown4);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button9);
@@ -362,6 +406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,5 +443,9 @@
         private Label label9;
         private NumericUpDown numericUpDown4;
         private Label label10;
+        private Label label11;
+        private NumericUpDown numericUpDown5;
+        private Label label12;
+        private Button button10;
     }
 }
